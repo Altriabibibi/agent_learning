@@ -19,7 +19,6 @@ import sys
 import io
 from contextlib import redirect_stdout, redirect_stderr
 
-# ... existing code ...
 
 # ============================================================================
 # 第2部分: 工具函数定义
