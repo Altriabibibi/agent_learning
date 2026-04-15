@@ -19,6 +19,7 @@ import sys
 import io
 from contextlib import redirect_stdout, redirect_stderr
 
+# ... existing code ...
 
 # ============================================================================
 # 第2部分: 工具函数定义
@@ -48,6 +49,7 @@ def save_to_txt(data: str, filename: str = None):
         # 例如：research_output_2026-04-10_15-30-25.txt
         timestamp = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
         filename = f"生成文件_{timestamp}.txt"
+        print("自动生成文件名："+filename)
     
     # 获取当前系统时间，用于文件内容中的时间戳
     timestamp_content = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
@@ -100,6 +102,7 @@ def web_search(query: str) -> str:
     异常处理:
         如果搜索失败（网络错误、API 限制等），返回错误信息而不是抛出异常
     """
+    print("正在搜索："+query)
     # 使用 try-except 捕获所有可能的异常
     # 网络请求可能失败：断网、DNS 解析失败、API 限流等
     try:
@@ -171,6 +174,7 @@ def wiki_search(query: str) -> str:
         如果词条不存在、网络错误或语言不支持，返回错误信息
     """
     # 使用 try-except 处理可能的异常
+    print("正在查询维基百科...")
     try:
         # 延迟导入维基百科 API 客户端
         import wikipedia  # Python 维基百科库
@@ -237,6 +241,7 @@ def get_datetime(_input: str = "") -> str:
     Returns:
         str: 格式化的当前时间字符串
     """
+    print("获取当前时间中...")
     # datetime.now() 返回 datetime 对象，需要转换为字符串
     current_time = datetime.now().strftime("%Y年%m月%d日 %H:%M:%S")
     return f"当前时间: {current_time}"
@@ -248,6 +253,8 @@ def get_datetime(_input: str = "") -> str:
 # 使用场景: Agent 需要分析用户上传的 Word 文档时
 # ----------------------------------------------------------------------------
 def read_document(file_path: str) -> str:
+    print("正在读取 Word 文档...")
+    print("文件名为："+file_path)
     """
     读取 Word 文档（.doc 或 .docx）的内容
 
@@ -300,6 +307,8 @@ def read_python_file(file_path: str) -> str:
     Returns:
         str: 文件的完整内容，包含行号
     """
+    print("正在读取 Python 文件...")
+    print("文件名为："+file_path)
     try:
         if not os.path.exists(file_path):
             return f"错误：文件不存在 - {file_path}"
@@ -341,6 +350,7 @@ def save_python_file(code: str, file_path: str) -> str:
     Returns:
         str: 保存成功的确认信息
     """
+    print("正在保存 Python 文件...")
     try:
         # 确保目录存在
         directory = os.path.dirname(file_path)
@@ -378,6 +388,7 @@ def run_python_code(code: str) -> str:
         - 运行 .py 文件（传入文件路径）
         - 导入常用安全模块（math, random, json, datetime 等）
     """
+    print("正在运行python代码")
     try:
         # 检查是否是文件路径
         if code.strip().endswith('.py'):
@@ -535,7 +546,5 @@ run_code_tool = Tool(
 # 不需要手动注册，@tool 装饰器已经处理
 # read_py_file_tool 和 save_py_file_tool 已经在上面通过 @tool 装饰器创建
 
-
-# ... existing code ...
 
 
