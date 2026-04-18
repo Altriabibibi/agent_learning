@@ -10,7 +10,7 @@ from langchain.agents import create_agent
 
 # 最后导入工具（包含 NumPy 依赖）
 from tools import time_tool,save_tool,read_doc_tool,run_code_tool,read_python_file,save_python_file,analyze_csv_excel,analyze_code_quality,add_documents_to_vector_db,search_vector_db,clear_vector_db,save_user_preference,get_user_preferences,delete_user_preference
-from tools_file.vision_tools import get_image_info,resize_image,convert_image_format,enhance_image,apply_filter,crop_image,rotate_image,create_thumbnail,add_watermark
+from vision_tools import get_image_info,resize_image,convert_image_format,enhance_image,apply_filter,crop_image,rotate_image,create_thumbnail,add_watermark
 
 messages_history=[]
 
